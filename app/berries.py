@@ -1,5 +1,6 @@
 """ Module about manage data of Berry from Poke API """
-from os import getenv
+from os import getenv, path, makedirs
+import matplotlib.pyplot as plt
 import requests
 from dotenv import load_dotenv
 from operations import MathOperations
@@ -14,6 +15,8 @@ class Berries:
         self.all_data = self.get_paginated_data()
         self.berries_names = self.get_berries_names()
         self.growth_times = self.get_berry_growth_times()
+        self.min_growth_time = min(self.growth_times)
+        self.max_growth_time = max(self.growth_times)
 
     def fetch_data(self, url: str):
         """ Fetch base data """
@@ -48,23 +51,22 @@ class Berries:
 
         for berry in self.all_data:
             berry_data = self.fetch_data(berry['url'])
-
             growth_time = berry_data['growth_time']
             growth_times.append(growth_time)
 
         return growth_times
 
-    def get_barries_stats(self):
-        """ add doc """
+    def get_barries_stats(self) -> dict:
+        """ Return the stats of the berries """
         growth_times = self.growth_times
-        min_growth_time = min(growth_times)
+        min_growth_time = self.min_growth_time
         median_growth_time = self.math_ops.calculate_median(growth_times)
-        max_growth_time = max(growth_times)
+        max_growth_time = self.max_growth_time
         variance_growth_time = self.math_ops.calculate_variance(growth_times)
         mean_growth_time = self.math_ops.calculate_mean(growth_times)
         frequency_growth_time = self.math_ops.calculate_frequency_growth_times(
             growth_times)
-
+        self.generate_histogram()
         return {
             "berries_names": self.berries_names,
             "min_growth_time": min_growth_time,
@@ -74,3 +76,23 @@ class Berries:
             "mean_growth_time": mean_growth_time,
             "frequency_growth_time": frequency_growth_time
         }
+
+    def generate_histogram(self):
+        """ Generate the image of histogram data file """
+        plt.hist(
+            self.growth_times,
+            bins=range(self.min_growth_time, self.max_growth_time + 1),
+            edgecolor='black'
+        )
+
+        plt.title('Histogram of Berry Growth Times')
+        plt.xlabel('Growth Time')
+        plt.ylabel('Frequency')
+
+        imgs_path = 'app/static/imgs'
+
+        if not path.exists(imgs_path):
+            makedirs(imgs_path)
+
+        plt.savefig(f'{imgs_path}/histogram.png')
+        plt.close()

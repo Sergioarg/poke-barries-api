@@ -1,7 +1,7 @@
 """ Main math operations to calculate the data """
 
 class MathOperations:
-    """Some math operations"""
+    """ Some math operations """
 
     def calculate_mean(self, numbers: list) -> float:
         """Caculate the media """

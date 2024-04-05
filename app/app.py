@@ -1,23 +1,27 @@
 """ Main API of Berries Stats"""
 from os import getenv
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_caching import Cache
 from berries import Berries
 from operations import MathOperations
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
+
+math_ops = MathOperations()
+berries = Berries(math_ops)
 
 @app.route('/', methods=['GET'])
 def base_endpoint():
-    """ Base endpoint """
+    """ Base endpoint to get information about the API """
     response = {
         "message": "Poke-berries statistics API",
         "version": "1.0",
         "endpoints": {
             "base": "/",
-            "berries": "/api/v1/berries/stats"
+            "berries": "/api/v1/berries/stats",
+            "histogram": "/api/v1/berries/stats/histogram"
         }
     }
     return jsonify(response)
@@ -27,11 +31,16 @@ def base_endpoint():
 @cache.cached(timeout=50)
 def get_all_berries_stats():
     """ Return barries stats """
-    math_ops = MathOperations()
-    berries = Berries(math_ops)
 
     response = berries.get_barries_stats()
+
     return jsonify(response)
+
+
+@app.route('/api/v1/berries/stats/histogram')
+def histogram_view():
+    """ Render the histogram page """
+    return render_template('histogram.html')
 
 
 if __name__ == '__main__':

@@ -3,5 +3,7 @@
 __pycache__/
 *.json
 
+histogram.png
+
 # Delete this after finish
 intructions.md
