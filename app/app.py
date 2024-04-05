@@ -43,4 +43,4 @@ def histogram_view():
 
 
 if __name__ == '__main__':
-    app.run(host=API_HOST, port=API_PORT, debug=True)
+    app.run(host=API_HOST, port=API_PORT)

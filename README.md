@@ -43,8 +43,7 @@ This command installs all the necessary packages listed in the `requirements.txt
 1. **Set Environment Variables**: If your application requires environment variables.
 
    ```bash
-   export FLASK_APP=app/app.py
-   export FLASK_ENV=development
+   export FLASK_APP=app/app.py && export FLASK_ENV=development
    ```
 
 2. **Run the Flask Application**: Use the `flask run` command to start the application.

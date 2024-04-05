@@ -19,7 +19,8 @@ class Berries:
         self.max_growth_time = max(self.growth_times)
 
     def fetch_data(self, url: str):
-        """ Fetch base data """
+        """ Fetch data from api """
+
         response = requests.get(url, timeout=30)
 
         if response.status_code == 200:
@@ -27,7 +28,6 @@ class Berries:
             data = response.json()
         else:
             data = {}
-
         return data
 
 
@@ -45,7 +45,8 @@ class Berries:
     def get_berries_names(self) -> list:
         """ Create a list with names of berries """
         names = [item['name'] for item in self.all_data]
-        return names.sort()
+        names.sort()
+        return names
 
     def get_berry_growth_times(self) -> list:
         """ Create a list with valoues of growth """
