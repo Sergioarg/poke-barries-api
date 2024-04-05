@@ -43,7 +43,7 @@ This command installs all the necessary packages listed in the `requirements.txt
 1. **Set Environment Variables**: If your application requires environment variables.
 
    ```bash
-   export berries_api=app/app.py && export FLASK_ENV=development
+   export FLASK_APP=app/app.py && export FLASK_ENV=development
    ```
 
 2. **Run the Flask Application**: Use the `flask run` command to start the application.
@@ -94,7 +94,7 @@ To access this view, navigate to `http://127.0.0.1:5000/api/v1/berries/histogram
 
 # Running the Poke Berries Stats API using the Dockerfile
 
-This document provides instructions on how to build and run the Poke Berries Stats API project using Docker. Docker allows you to containerize your application, making it easier to deploy and run on any system that supports Docker.
+This document provides instructions on how to build and run the Poke Berries Stats API project using Docker.
 
 ## Prerequisites
 

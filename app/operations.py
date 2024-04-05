@@ -1,15 +1,28 @@
 """ Main math operations to calculate the data """
+from functools import wraps
+
+def validate_not_empty_and_numeric(func):
+    """ Decorator to validate list of numbers """
+    @wraps(func)
+    def wrapper(self, numbers: list):
+        if not numbers:
+            raise ValueError("The list of numbers cannot be empty.")
+        if not all(isinstance(num, (int, float)) for num in numbers):
+            raise ValueError("All items in the list must be numbers.")
+        return func(self, numbers)
+    return wrapper
+
 
 class MathOperations:
     """ Some math operations """
-
+    @validate_not_empty_and_numeric
     def calculate_mean(self, numbers: list) -> float:
         """Caculate the media """
         result = sum(numbers) / len(numbers)
 
         return result
 
-
+    @validate_not_empty_and_numeric
     def calculate_median(self, numbers: list) -> float:
         """ Calculate median """
         numbers.sort()
@@ -22,7 +35,7 @@ class MathOperations:
 
         return median
 
-
+    @validate_not_empty_and_numeric
     def calculate_variance(self, numbers: list) -> float:
         """ Calculate variance in base of numbers data """
         mean = self.calculate_mean(numbers)
@@ -30,8 +43,9 @@ class MathOperations:
 
         return variance
 
-    def calculate_frequency_growth_times(self, numbers: list) -> dict:
-        """ Calculate the frequency of growth times """
+    @validate_not_empty_and_numeric
+    def calculate_frequency(self, numbers: list) -> dict:
+        """ Calculate the numbers frequency """
 
         frequency = {}
 
