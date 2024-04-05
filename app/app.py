@@ -28,9 +28,7 @@ def base_endpoint():
 def get_all_berries_stats():
     """ Return barries stats """
     berries = Berries(math_ops())
-
     response = berries.get_barries_stats()
-
     return jsonify(response)
 
 
