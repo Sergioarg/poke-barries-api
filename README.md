@@ -4,6 +4,8 @@ This document provides instructions on how to set up and run the Poke Berries St
 
 ## Setting Up the Virtual Environment
 
+**Important**: This project work with Python version >= 3.7
+
 1. **Open a Terminal**: Navigate to the root directory of the project.
 
 2. **Create a Virtual Environment**: Run the following command to create a virtual environment named `.venv`. This isolates the project's dependencies from other Python projects on your system.
