@@ -84,8 +84,7 @@ curl http://127.0.0.1:5000/api/v1/berries/
 
 This view is a histogram graph with statistics on berry growth times.
 
-<img src="doc_imgs/histogram_view.png" alt="Example Image">
-
+<img src="doc_imgs/histogram_view.png" alt="Example Image" width="500" height="400">
 
 <!-- TODO: Add pytests -->
 <!-- ## Testing with Pytest
