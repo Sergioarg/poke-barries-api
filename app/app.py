@@ -2,8 +2,10 @@
 from os import getenv
 from flask import Flask, jsonify, render_template
 from flask_caching import Cache
-from app.berries import Berries
-from app.operations import MathOperations as math_ops
+
+from app.berries.berry_data_fetcher import BerryDataFetcher
+from app.berries.berry_statistics import BerryStatistics
+from app.berries.histogram_generator import HistogramGenerator
 
 
 app = Flask(__name__, static_folder='static')
@@ -11,6 +13,7 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 API_HOST = getenv("API_HOST", "127.0.0.1")
 API_PORT = getenv("API_PORT", "5000")
+CACHE_TIME_OUT = 50
 
 @app.route('/', methods=['GET'])
 def base_endpoint():
@@ -27,11 +30,16 @@ def base_endpoint():
 
 
 @app.route('/api/v1/berries/', methods=['GET'])
-@cache.cached(timeout=50)
+@cache.cached(timeout=CACHE_TIME_OUT)
 def get_all_berries_stats():
     """ Return barries stats """
-    berries = Berries(math_ops())
-    response = berries.get_barries_stats()
+
+    berry_data_fetcher = BerryDataFetcher()
+    berry_statistics = BerryStatistics(berry_data_fetcher)
+    histogram_generator = HistogramGenerator(berry_statistics)
+    histogram_generator.generate_histogram()
+    response = berry_statistics.get_stats()
+
     return jsonify(response)
 
 

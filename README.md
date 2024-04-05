@@ -145,6 +145,7 @@ docker rm berries_api
 ```
 
 <!-- TODO: Add pytests -->
+<!-- TODO: Porque no teste todo, pero si en un proyecto en produccion -->
 <!-- ## Testing with Pytest
 
 To run tests with pytest, ensure you have pytest installed in your virtual environment:
@@ -160,3 +161,4 @@ pytest
 ```
 
 This command will discover and run all tests in the project. -->
+<!-- TODO: Explicar porque utiliza flask cache y no Redis -->
