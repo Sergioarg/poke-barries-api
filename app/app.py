@@ -3,14 +3,11 @@ from os import getenv
 from flask import Flask, jsonify, render_template
 from flask_caching import Cache
 from berries import Berries
-from operations import MathOperations
+from operations import MathOperations as math_ops
 
 
 app = Flask(__name__, static_folder='static')
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
-
-math_ops = MathOperations()
-berries = Berries(math_ops)
 
 @app.route('/', methods=['GET'])
 def base_endpoint():
@@ -20,24 +17,25 @@ def base_endpoint():
         "version": "1.0",
         "endpoints": {
             "base": "/",
-            "berries": "/api/v1/berries/stats",
-            "histogram": "/api/v1/berries/stats/histogram"
+            "berries": "/api/v1/berries/",
+            "histogram": "/api/v1/berries/histogram"
         }
     }
     return jsonify(response)
 
 
-@app.route('/api/v1/berries/stats', methods=['GET'])
+@app.route('/api/v1/berries/', methods=['GET'])
 @cache.cached(timeout=50)
 def get_all_berries_stats():
     """ Return barries stats """
+    berries = Berries(math_ops())
 
     response = berries.get_barries_stats()
 
     return jsonify(response)
 
 
-@app.route('/api/v1/berries/stats/histogram')
+@app.route('/api/v1/berries/histogram')
 def histogram_view():
     """ Render the histogram page """
     return render_template('histogram.html')
