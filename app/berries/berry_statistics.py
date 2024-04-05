@@ -1,6 +1,6 @@
 """ Manage the statistics data """
 from statistics import mean, median, variance
-from .berry_data_fetcher import BerryDataFetcher
+from .berry_data_fetcher import BerryDataFetcher # pylint: disable=E0611, E0401
 
 class BerryStatistics:
     """ Class responsible for calculating statistics about berries. """

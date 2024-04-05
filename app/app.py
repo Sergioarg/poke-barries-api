@@ -3,9 +3,9 @@ from os import getenv
 from flask import Flask, jsonify, render_template
 from flask_caching import Cache
 
-from app.berries.berry_data_fetcher import BerryDataFetcher
-from app.berries.berry_statistics import BerryStatistics
-from app.berries.histogram_generator import HistogramGenerator
+from .berries.berry_data_fetcher import BerryDataFetcher # pylint: disable=E0611, E0401
+from .berries.berry_statistics import BerryStatistics
+from .berries.histogram_generator import HistogramGenerator
 
 
 app = Flask(__name__, static_folder='static')
