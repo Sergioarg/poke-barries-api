@@ -66,10 +66,10 @@ This endpoint retrieves statistics about Poke Berries. The response will be in J
 // Response
 {
    "berries_names": [...],
-   "min_growth_time": "" // time, int
+   "min_growth_time": "", // time, int
    "median_growth_time": "", // time, float
-   "max_growth_time": "" // time, int
-   "variance_growth_time": "" // time, float
+   "max_growth_time": "", // time, int
+   "variance_growth_time": "", // time, float
    "mean_growth_time": "", // time, float
    "frequency_growth_time": "", // time, {growth_time: frequency, ...}
 }
