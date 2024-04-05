@@ -43,7 +43,7 @@ This command installs all the necessary packages listed in the `requirements.txt
 1. **Set Environment Variables**: If your application requires environment variables.
 
    ```bash
-   export FLASK_APP=app/app.py && export FLASK_ENV=development
+   export berries_api=app/app.py && export FLASK_ENV=development
    ```
 
 2. **Run the Flask Application**: Use the `flask run` command to start the application.
@@ -88,6 +88,61 @@ This view is a histogram graph with statistics on berry growth times.
 <img src="doc_imgs/histogram_view.png" alt="Example Image" width="500" height="400">
 
 To access this view, navigate to `http://127.0.0.1:5000/api/v1/berries/histogram` in your web browser.
+
+
+---
+
+# Running the Poke Berries Stats API using the Dockerfile
+
+This document provides instructions on how to build and run the Poke Berries Stats API project using Docker. Docker allows you to containerize your application, making it easier to deploy and run on any system that supports Docker.
+
+## Prerequisites
+
+- Docker installed on your machine. If you haven't installed Docker yet, you can download it from the [official Docker website](https://www.docker.com/products/docker-desktop).
+- A terminal or command prompt.
+
+
+## Building the Docker Image
+
+1. **Open a Terminal**: Navigate to the root directory of the project where the Dockerfile is located.
+
+2. **Build the Docker Image**: Run the following command to build a Docker image for the Poke Berries Stats API. Replace `dockerfile` with a name of your choice for the Docker image.
+
+   ```bash
+   docker build -t dockerfile .
+   ```
+
+   This command tells Docker to build an image using the Dockerfile in the current directory (`.`) and tag it with the name `dockerfile`.
+
+## Running the Docker Container
+
+1. **Run the Docker Container**: After building the image, you can run a container from it using the following command. Replace `dockerfile` with the name you used when building the image, and `berries_api` with a name for your container.
+
+   ```bash
+   docker run -d -p 5000:5000 --name berries_api dockerfile
+   ```
+
+   This command tells Docker to run a container in detached mode (`-d`), map port 5000 of the container to port 5000 of the host (`-p 5000:5000`), name the container `berries_api`, and use the image `dockerfile`.
+
+2. **Access the API**: Once the container is running, you can access the Poke Berries Stats API by navigating to `http://localhost:5000/api/v1/berries/` in your web browser or using a tool like `curl` with the command:
+
+   ```bash
+   curl http://localhost:5000/api/v1/berries/
+   ```
+
+## Stopping and Removing the Docker Container
+
+If you need to stop the running container, you can do so with the following command:
+
+```bash
+docker stop berries_api
+```
+
+And if you want to remove the container after stopping it, use:
+
+```bash
+docker rm berries_api
+```
 
 <!-- TODO: Add pytests -->
 <!-- ## Testing with Pytest
