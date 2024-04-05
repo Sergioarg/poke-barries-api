@@ -4,7 +4,7 @@ This document provides instructions on how to set up and run the Poke Berries St
 
 ## Setting Up the Virtual Environment
 
-**Important**: This project work with Python version >= 3.10
+**Important**: This project works with Python version >= 3.10
 
 1. **Open a Terminal**: Navigate to the root directory of the project.
 
