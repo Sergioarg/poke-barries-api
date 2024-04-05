@@ -9,6 +9,9 @@ from app.operations import MathOperations as math_ops
 app = Flask(__name__, static_folder='static')
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
+API_HOST = getenv("API_HOST", "127.0.0.1")
+API_PORT = getenv("API_PORT", "5000")
+
 @app.route('/', methods=['GET'])
 def base_endpoint():
     """ Base endpoint to get information about the API """
@@ -16,8 +19,8 @@ def base_endpoint():
         "message": "Poke-berries statistics API",
         "version": "1.0",
         "endpoints": {
-            "berries": "/api/v1/berries/",
-            "histogram": "/api/v1/berries/histogram"
+            "berries": f"{API_HOST}:{API_PORT}/api/v1/berries/",
+            "histogram": f"{API_HOST}:{API_PORT}/api/v1/berries/histogram"
         }
     }
     return jsonify(response)
@@ -40,6 +43,4 @@ def histogram_view():
 
 
 if __name__ == '__main__':
-    api_host = getenv("API_HOST", "127.0.0.1")
-    api_port = getenv("API_PORT", "5000")
-    app.run(host=api_host, port=api_port, debug=True)
+    app.run(host=API_HOST, port=API_PORT, debug=True)
