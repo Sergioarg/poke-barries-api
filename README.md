@@ -80,11 +80,13 @@ To access this endpoint, navigate to `http://127.0.0.1:5000/api/v1/berries/` in 
 curl http://127.0.0.1:5000/api/v1/berries/
 ```
 
-### View `/api/v1/berries/`
+### View `/api/v1/berries/histogram`
 
 This view is a histogram graph with statistics on berry growth times.
 
 <img src="doc_imgs/histogram_view.png" alt="Example Image" width="500" height="400">
+
+To access this view, navigate to `http://127.0.0.1:5000/api/v1/berries/histogram` in your web browser.
 
 <!-- TODO: Add pytests -->
 <!-- ## Testing with Pytest
