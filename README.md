@@ -82,9 +82,9 @@ curl http://127.0.0.1:5000/api/v1/berries/
 
 ### View `/api/v1/berries/`
 
-This endpoint a view a histogram graph with statistics about berry growth times.
+This view is a histogram graph with statistics on berry growth times.
 
-<img src="doc_imgs/histogram_view.png">
+<img src="doc_imgs/histogram_view.png" alt="Example Image">
 
 
 <!-- TODO: Add pytests -->
