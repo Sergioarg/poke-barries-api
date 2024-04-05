@@ -16,7 +16,6 @@ def base_endpoint():
         "message": "Poke-berries statistics API",
         "version": "1.0",
         "endpoints": {
-            "base": "/",
             "berries": "/api/v1/berries/",
             "histogram": "/api/v1/berries/histogram"
         }
