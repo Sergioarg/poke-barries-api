@@ -3,7 +3,7 @@ from os import getenv, path, makedirs
 import matplotlib.pyplot as plt
 import requests
 from dotenv import load_dotenv
-from operations import MathOperations
+from app.operations import MathOperations
 
 
 load_dotenv()
