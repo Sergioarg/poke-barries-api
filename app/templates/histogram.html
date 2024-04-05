@@ -4,9 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Histogram of Berry Growth Times</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
   </head>
   <body>
     <h1>Histogram of Berry Growth Times</h1>
-    <img src="{{ url_for('static', filename='imgs/histogram.png')}}" alt="Histogram image">
+    <img
+      id="histogram-image"
+      src="{{ url_for('static', filename='imgs/histogram.png')}}"
+      alt="Histogram Image"
+    />
   </body>
 </html>
