@@ -20,12 +20,15 @@ class Berries:
 
     def fetch_data(self, url: str):
         """ Fetch base data """
-        try:
-            response = requests.get(url, timeout=30)
+        response = requests.get(url, timeout=30)
+
+        if response.status_code == 200:
             response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            return {"Error": e}
+            data = response.json()
+        else:
+            data = {}
+
+        return data
 
 
     def get_paginated_data(self) -> list:
@@ -42,8 +45,7 @@ class Berries:
     def get_berries_names(self) -> list:
         """ Create a list with names of berries """
         names = [item['name'] for item in self.all_data]
-        names.sort()
-        return names
+        return names.sort()
 
     def get_berry_growth_times(self) -> list:
         """ Create a list with valoues of growth """
