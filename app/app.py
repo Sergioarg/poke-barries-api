@@ -7,13 +7,14 @@ from .berries.berry_data_fetcher import BerryDataFetcher
 from .berries.berry_statistics import BerryStatistics
 from .berries.histogram_generator import HistogramGenerator
 
-app = Flask(__name__, static_folder='static')
-berries_bp = Blueprint(name='berries', import_name=__name__)
-cache = Cache(app, config={'CACHE_TYPE': 'simple'})
-
-CACHE_TIME_OUT = 50
+# Confurations constans
 API_HOST = getenv("API_HOST", "127.0.0.1")
 API_PORT = getenv("API_PORT", "5000")
+
+# Initilization of flask and blueprints
+app = Flask(__name__, static_folder='static')
+cache = Cache(app, config={'CACHE_TYPE': 'simple'})
+berries_bp = Blueprint(name='berries', import_name=__name__)
 
 @app.route('/', methods=['GET'])
 def base_endpoint():
@@ -30,7 +31,7 @@ def base_endpoint():
 
 
 @berries_bp.route('/', methods=['GET'])
-@cache.cached(timeout=CACHE_TIME_OUT)
+@cache.cached(timeout=50)
 def get_all_berries_stats():
     """ Return barries stats """
     berry_statistics = BerryStatistics(BerryDataFetcher())
@@ -51,8 +52,8 @@ def histogram_view():
     template = 'histogram.html'
     return render_template(template)
 
-# Register blueprint in app
+# Register Blueprint in app
 app.register_blueprint(berries_bp, url_prefix='/api/v1/berries')
 
 if __name__ == '__main__':
-    app.run(host=API_HOST, port=API_PORT, debug=False) # type: ignore
+    app.run(host=API_HOST, port=API_PORT) # type: ignore
