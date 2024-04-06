@@ -102,8 +102,8 @@ Then, run the tests with the following command:
 ```bash
 pytest
 ```
-
 This command will discover and run all tests in the project.
+
 ---
 
 # Running the Poke Berries Stats API using the Dockerfile
