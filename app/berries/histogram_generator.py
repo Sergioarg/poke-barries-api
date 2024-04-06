@@ -10,7 +10,7 @@ class HistogramGenerator: # pylint: disable=too-few-public-methods
     def __init__(self, berry_statistics: BerryStatistics):
         self.berry_statistics = berry_statistics
 
-    def generate_histogram(self):
+    def generate_histogram(self, imgs_path='app/static/imgs'):
         """ Generates and saves the histogram of the berry growth times. """
         plt.hist(
             self.berry_statistics.growth_times,
@@ -23,8 +23,6 @@ class HistogramGenerator: # pylint: disable=too-few-public-methods
         plt.title('Histogram of Berry Growth Times')
         plt.xlabel('Growth Time')
         plt.ylabel('Frequency')
-
-        imgs_path = 'app/static/imgs'
 
         if not path.exists(imgs_path):
             makedirs(imgs_path)
