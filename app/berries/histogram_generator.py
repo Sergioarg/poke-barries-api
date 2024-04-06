@@ -1,10 +1,9 @@
 """ Module to manage the histogram """
-# pylint: disable=too-few-public-methods
 from os import path, makedirs
 import matplotlib.pyplot as plt
 from .berry_statistics import BerryStatistics
 
-class HistogramGenerator:
+class HistogramGenerator: # pylint: disable=too-few-public-methods
     """
     Class responsible for interacting with the Poke API to fetch berry data.
     """
