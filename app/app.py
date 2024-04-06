@@ -14,7 +14,7 @@ API_PORT = getenv("API_PORT", "5000")
 # Initilization of flask and blueprints
 app = Flask(__name__, static_folder='static')
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
-berries_bp = Blueprint(name='berries', import_name=__name__)
+berries_bp = Blueprint(name='allBerryStats', import_name=__name__)
 
 @app.route('/', methods=['GET'])
 def base_endpoint():
@@ -53,7 +53,7 @@ def histogram_view():
     return render_template(template)
 
 # Register Blueprint in app
-app.register_blueprint(berries_bp, url_prefix='/api/v1/berries')
+app.register_blueprint(berries_bp, url_prefix='/api/v1/allBerryStats')
 
 if __name__ == '__main__':
     app.run(host=API_HOST, port=API_PORT) # type: ignore
