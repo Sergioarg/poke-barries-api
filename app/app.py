@@ -51,4 +51,4 @@ def histogram_view():
 
 
 if __name__ == '__main__':
-    app.run(host=API_HOST, port=API_PORT)
+    app.run(host=API_HOST, port=API_PORT) # type: ignore
