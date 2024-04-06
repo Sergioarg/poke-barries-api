@@ -8,13 +8,14 @@ from .berries.berry_statistics import BerryStatistics
 from .berries.histogram_generator import HistogramGenerator
 
 # Confurations constans
+ALL_BERRY_STATS_PATH = 'allBerryStats'
 API_HOST = getenv("API_HOST", "127.0.0.1")
 API_PORT = getenv("API_PORT", "5000")
 
 # Initilization of flask and blueprints
 app = Flask(__name__, static_folder='static')
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
-berries_bp = Blueprint(name='allBerryStats', import_name=__name__)
+berries_bp = Blueprint(name=ALL_BERRY_STATS_PATH, import_name=__name__)
 
 @app.route('/', methods=['GET'])
 def base_endpoint():
@@ -23,8 +24,8 @@ def base_endpoint():
         "message": "Poke-berries statistics API",
         "version": "1.0",
         "endpoints": {
-            "berries": f"{API_HOST}:{API_PORT}/api/v1/berries/",
-            "histogram": f"{API_HOST}:{API_PORT}/api/v1/berries/histogram"
+            "berries": f"{API_HOST}:{API_PORT}/api/v1/{ALL_BERRY_STATS_PATH}/",
+            "histogram": f"{API_HOST}:{API_PORT}/api/v1/{ALL_BERRY_STATS_PATH}/histogram"
         }
     }
     return jsonify(response)
@@ -53,7 +54,7 @@ def histogram_view():
     return render_template(template)
 
 # Register Blueprint in app
-app.register_blueprint(berries_bp, url_prefix='/api/v1/allBerryStats')
+app.register_blueprint(berries_bp, url_prefix=f'/api/v1/{ALL_BERRY_STATS_PATH}')
 
 if __name__ == '__main__':
     app.run(host=API_HOST, port=API_PORT) # type: ignore

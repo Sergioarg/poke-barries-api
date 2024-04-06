@@ -3,7 +3,5 @@
 __pycache__/
 *.json
 
+# Image generated
 histogram.png
-
-# Delete this after finish
-intructions.md
