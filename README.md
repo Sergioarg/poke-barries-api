@@ -89,7 +89,21 @@ This view is a histogram graph with statistics on berry growth times.
 
 To access this view, navigate to `http://127.0.0.1:5000/api/v1/berries/histogram` in your web browser.
 
+## Testing with Pytest
 
+To run tests with pytest, ensure you have pytest installed in your virtual environment:
+
+```bash
+pip install pytest
+```
+
+Then, run the tests with the following command:
+
+```bash
+pytest
+```
+
+This command will discover and run all tests in the project.
 ---
 
 # Running the Poke Berries Stats API using the Dockerfile
@@ -144,21 +158,4 @@ And if you want to remove the container after stopping it, use:
 docker rm berries_api
 ```
 
-<!-- TODO: Add pytests -->
-<!-- TODO: Porque no teste todo, pero si en un proyecto en produccion -->
-<!-- ## Testing with Pytest
-
-To run tests with pytest, ensure you have pytest installed in your virtual environment:
-
-```bash
-pip install pytest
-```
-
-Then, run the tests with the following command:
-
-```bash
-pytest
-```
-
-This command will discover and run all tests in the project. -->
 <!-- TODO: Explicar porque utiliza flask cache y no Redis -->

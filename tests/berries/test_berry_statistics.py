@@ -1,8 +1,7 @@
-""" Test file """
+""" Testing BerryStatistics class """
 # pylint: disable=W0621
 import pytest
 from app.berries.berry_statistics import BerryStatistics
-from app.berries.berry_data_fetcher import BerryDataFetcher
 
 
 @pytest.fixture
