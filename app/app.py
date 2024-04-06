@@ -9,7 +9,7 @@ from .berries.histogram_generator import HistogramGenerator
 
 
 app = Flask(__name__, static_folder='static')
-berries_bp = Blueprint('berries', __name__)
+berries_bp = Blueprint(name='berries', import_name=__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 CACHE_TIME_OUT = 50
