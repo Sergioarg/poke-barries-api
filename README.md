@@ -58,7 +58,7 @@ This command installs all the necessary packages listed in the `requirements.txt
 
 Once the Flask application is running, you can access the API endpoints using a web browser or a tool like `curl` or Postman.
 
-### GET `/api/v1/berries/`
+### GET `/api/v1/allBerryStats/`
 
 This endpoint retrieves statistics about Poke Berries. The response will be in JSON format this is a example of the response:
 
@@ -75,19 +75,19 @@ This endpoint retrieves statistics about Poke Berries. The response will be in J
 }
 ```
 
-To access this endpoint, navigate to `http://127.0.0.1:5000/api/v1/berries/` in your web browser or use a tool like `curl` with the command:
+To access this endpoint, navigate to `http://127.0.0.1:5000/api/v1/allBerryStats/` in your web browser or use a tool like `curl` with the command:
 
 ```bash
-curl http://127.0.0.1:5000/api/v1/berries/
+curl http://127.0.0.1:5000/api/v1/allBerryStats/
 ```
 
-### View `/api/v1/berries/histogram`
+### View `/api/v1/allBerryStats/histogram`
 
 This view is a histogram graph with statistics on berry growth times.
 
 <img src="doc_imgs/histogram_view.png" alt="Example Image" width="500" height="400">
 
-To access this view, navigate to `http://127.0.0.1:5000/api/v1/berries/histogram` in your web browser.
+To access this view, navigate to `http://127.0.0.1:5000/api/v1/allBerryStats/histogram` in your web browser.
 
 ## Testing with Pytest
 
@@ -138,10 +138,10 @@ This document provides instructions on how to build and run the Poke Berries Sta
 
    This command tells Docker to run a container in detached mode (`-d`), map port 5000 of the container to port 5000 of the host (`-p 5000:5000`), name the container `berries_api`, and use the image `dockerfile`.
 
-2. **Access the API**: Once the container is running, you can access the Poke Berries Stats API by navigating to `http://localhost:5000/api/v1/berries/` in your web browser or using a tool like `curl` with the command:
+2. **Access the API**: Once the container is running, you can access the Poke Berries Stats API by navigating to `http://localhost:5000/api/v1/allBerryStats/` in your web browser or using a tool like `curl` with the command:
 
    ```bash
-   curl http://localhost:5000/api/v1/berries/
+   curl http://localhost:5000/api/v1/allBerryStats/
    ```
 
 ## Stopping and Removing the Docker Container
