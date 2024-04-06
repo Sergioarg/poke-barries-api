@@ -3,7 +3,7 @@ from os import getenv
 from flask import Flask, jsonify, render_template
 from flask_caching import Cache
 
-from .berries.berry_data_fetcher import BerryDataFetcher # pylint: disable=E0611, E0401
+from .berries.berry_data_fetcher import BerryDataFetcher
 from .berries.berry_statistics import BerryStatistics
 from .berries.histogram_generator import HistogramGenerator
 
