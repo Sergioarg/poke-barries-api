@@ -24,6 +24,7 @@ def test_histogram_generator_generate_histogram(mock_berry_statistics, tmp_path)
     histogram_generator = HistogramGenerator(mock_berry_statistics)
     histogram_generator.generate_histogram(imgs_path=tmp_path)
 
-    histogram_path = tmp_path / "histogram.png"
+    file_name = "histogram.png"
+    histogram_path = tmp_path / file_name
 
-    assert histogram_path.exists()
+    assert histogram_path.exists(), f"File {file_name} has not been created"
