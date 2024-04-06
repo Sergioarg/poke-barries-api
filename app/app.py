@@ -7,7 +7,6 @@ from .berries.berry_data_fetcher import BerryDataFetcher
 from .berries.berry_statistics import BerryStatistics
 from .berries.histogram_generator import HistogramGenerator
 
-
 app = Flask(__name__, static_folder='static')
 berries_bp = Blueprint(name='berries', import_name=__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
