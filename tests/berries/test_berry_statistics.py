@@ -9,9 +9,9 @@ def mock_berry_data_fetcher(mocker):
     """ Mock of class BerryDataFetcher """
     mock = mocker.patch('app.berries.berry_data_fetcher.BerryDataFetcher')
     mock.all_data = [
-        { "name": "micle", "url": "https://pokeapi.co/api/v2/berry/61/"},
-        { "name": "custap", "url": "https://pokeapi.co/api/v2/berry/62/"},
-        { "name": "jaboca", "url": "https://pokeapi.co/api/v2/berry/63/"},
+        { "name": "cheri", "url": "https://pokeapi.co/api/v2/berry/1/"},
+        { "name": "chesto", "url": "https://pokeapi.co/api/v2/berry/2/"},
+        { "name": "pecha", "url": "https://pokeapi.co/api/v2/berry/3/"},
     ]
 
     return mock
@@ -30,7 +30,7 @@ def test_berry_statistics_properties(mock_berry_data_fetcher, mocker):
 
     berry_statistics = BerryStatistics(mock_berry_data_fetcher)
 
-    assert berry_statistics.berries_names == ['micle', 'custap', 'jaboca']
+    assert berry_statistics.berries_names == ['cheri', 'chesto', 'pecha']
     assert berry_statistics.min_growth_time == 3
     assert berry_statistics.max_growth_time == 9
 
