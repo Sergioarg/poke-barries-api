@@ -55,4 +55,4 @@ def histogram_view():
 app.register_blueprint(berries_bp, url_prefix='/api/v1/berries')
 
 if __name__ == '__main__':
-    app.run(host=API_HOST, port=API_PORT, debug=True) # type: ignore
+    app.run(host=API_HOST, port=API_PORT, debug=False) # type: ignore
