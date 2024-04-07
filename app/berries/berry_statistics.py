@@ -54,8 +54,8 @@ class BerryStatistics:
         """ Calculates and returns the statistics of the berries. """
 
         median_growth_time = median(self.growth_times)
-        variance_growth_time = variance(self.growth_times)
-        mean_growth_time = mean(self.growth_times)
+        variance_growth_time = round(variance(self.growth_times), 2)
+        mean_growth_time = round(mean(self.growth_times), 2)
         frequency_growth_time = self.__calculate_frequency(
             self.growth_times)
 
