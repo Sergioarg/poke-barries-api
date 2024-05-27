@@ -20,12 +20,14 @@ berries_bp = Blueprint(name=ALL_BERRY_STATS_PATH, import_name=__name__)
 @app.route('/', methods=['GET'])
 def base_endpoint():
     """ Base endpoint to get information about the API """
+    api_path = f"{API_HOST}:{API_PORT}/api/v1/{ALL_BERRY_STATS_PATH}/"
+
     response = {
         "message": "Poke-berries statistics API",
         "version": "1.0",
         "endpoints": {
-            "berries": f"{API_HOST}:{API_PORT}/api/v1/{ALL_BERRY_STATS_PATH}/",
-            "histogram": f"{API_HOST}:{API_PORT}/api/v1/{ALL_BERRY_STATS_PATH}/histogram"
+            "berries": api_path,
+            "histogram": f"{api_path}/histogram"
         }
     }
     return jsonify(response)
@@ -37,6 +39,7 @@ def get_all_berries_stats():
     """ Return barries stats """
     berry_statistics = BerryStatistics(BerryDataFetcher())
     response = berry_statistics.get_stats()
+
     return jsonify(response)
 
 

@@ -11,7 +11,6 @@ def test_berry_data_fetcher_inicialization(mocker):
     fetcher = BerryDataFetcher()
     assert fetcher.all_data
 
-
 @pytest.mark.parametrize("url, expected_data", [
     ("https://example.com/api/v2/berry", {
         "results": [{"name": "test_berry"}], "next": None
@@ -20,6 +19,7 @@ def test_berry_data_fetcher_inicialization(mocker):
         "results": [{"name": "test_berry_2"}], "next": None
     })
 ])
+
 def test_fetch_data(url, expected_data, monkeypatch):
     """ Test Fetch Data """
     mock_response = Mock(json=lambda: expected_data)

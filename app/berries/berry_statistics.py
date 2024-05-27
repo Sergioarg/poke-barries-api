@@ -59,13 +59,18 @@ class BerryStatistics:
 
         for time in numbers:
             if time in frequency:
-                frequency[time] = frequency.get(time, 0) + 1
+                frequency[time] += 1
+            else:
+                frequency[time] = 1
 
         return frequency
 
     def get_stats(self) -> dict:
-        """ Calculates and returns the statistics of the berries. """
+        """Calculates and returns the statistics of the berries.
 
+        Returns:
+            dict: The statistics of the berries.
+        """
         median_growth_time = median(self.growth_times)
         variance_growth_time = round(variance(self.growth_times), 2)
         mean_growth_time = round(mean(self.growth_times), 2)
