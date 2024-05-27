@@ -1,9 +1,9 @@
-""" Testing class HistogramGenerator """
 # pylint: disable=W0621
-import pytest
+""" Testing class HistogramGenerator """
+from pytest import fixture
 from app.berries.histogram_generator import HistogramGenerator
 
-@pytest.fixture
+@fixture
 def mock_berry_statistics(mocker):
     """ Mock Fixture to use in differnt cases """
     mock = mocker.patch('app.berries.berry_statistics.BerryStatistics')
