@@ -66,8 +66,11 @@ class BerryStatistics:
         return frequency
 
     def get_stats(self) -> dict:
-        """ Calculates and returns the statistics of the berries. """
+        """Calculates and returns the statistics of the berries.
 
+        Returns:
+            dict: The statistics of the berries.
+        """
         median_growth_time = median(self.growth_times)
         variance_growth_time = round(variance(self.growth_times), 2)
         mean_growth_time = round(mean(self.growth_times), 2)
