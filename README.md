@@ -65,13 +65,17 @@ This endpoint retrieves statistics about Poke Berries. The response will be in J
 ```json
 // Response
 {
-   "berries_names": [...],
-   "min_growth_time": "", // time, int
-   "median_growth_time": "", // time, float
-   "max_growth_time": "", // time, int
-   "variance_growth_time": "", // time, float
-   "mean_growth_time": "", // time, float
-   "frequency_growth_time": "", // time, {growth_time: frequency, ...}
+   "berries_names": [
+      "cheri",
+      "chesto",
+      ...
+   ],
+   "max_growth_time": 24,
+   "mean_growth_time": 12.86,
+   "min_growth_time": 2,
+   "median_growth_time": 15.0,
+   "variance_growth_time": "",
+   "frequency_growth_time": {}, // time, {growth_time: frequency, ...}
 }
 ```
 
@@ -85,7 +89,7 @@ curl http://127.0.0.1:5000/api/v1/allBerryStats/
 
 This view is a histogram graph with statistics on berry growth times.
 
-<img src="imgs/histogram_view.png" alt="Example Image" width="500" height="400">
+<img src="doc/histogram_view.png" alt="Example Image" width="500" height="400">
 
 To access this view, navigate to `http://127.0.0.1:5000/api/v1/allBerryStats/histogram` in your web browser.
 
@@ -157,5 +161,3 @@ And if you want to remove the container after stopping it, use:
 ```bash
 docker rm berries_api
 ```
-
-<!-- TODO: Explicar porque utiliza flask cache y no Redis -->
