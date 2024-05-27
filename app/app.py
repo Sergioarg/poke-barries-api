@@ -43,18 +43,16 @@ def get_all_berries_stats():
 @berries_bp.route('/histogram')
 def histogram_view():
     """ Render the histogram page """
-    histogram_path = 'app/static/imgs/histogram.png'
 
-    if not path.exists(histogram_path):
+    if not path.exists(path="/app/static/imgs/histogram.png"):
         berry_statistics = BerryStatistics(BerryDataFetcher())
         histogram_generator = HistogramGenerator(berry_statistics)
         histogram_generator.generate_histogram()
 
-    template = 'histogram.html'
-    return render_template(template)
+    return render_template(template_name_or_list='histogram.html')
 
 # Register Blueprint in app
-app.register_blueprint(berries_bp, url_prefix=f'/api/v1/{ALL_BERRY_STATS_PATH}')
+app.register_blueprint(blueprint=berries_bp, url_prefix=f'/api/v1/{ALL_BERRY_STATS_PATH}')
 
 if __name__ == '__main__':
-    app.run(host=API_HOST, port=API_PORT) # type: ignore
+    app.run(host=API_HOST, port=API_PORT)
