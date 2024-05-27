@@ -59,7 +59,9 @@ class BerryStatistics:
 
         for time in numbers:
             if time in frequency:
-                frequency[time] = frequency.get(time, 0) + 1
+                frequency[time] += 1
+            else:
+                frequency[time] = 1
 
         return frequency
 
