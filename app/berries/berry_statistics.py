@@ -11,7 +11,11 @@ class BerryStatistics:
 
     @property
     def berries_names(self) -> list:
-        """ Returns the names of the berries. """
+        """ Get the names of all berries.
+
+        Returns:
+            list: A list of all berries names.
+        """
         names = [item['name'] for item in self.berry_data_fetcher.all_data]
         return names
 
@@ -27,7 +31,11 @@ class BerryStatistics:
 
 
     def get_berry_growth_times(self) -> list:
-        """ Fetches the growth times of the berries. """
+        """ Returns the growth times of the berries.
+
+        Returns:
+            list: The growth times of the berries.
+        """
         growth_times = []
 
         for berry in self.berry_data_fetcher.all_data:
@@ -38,13 +46,20 @@ class BerryStatistics:
         return growth_times
 
     def __calculate_frequency(self, numbers: list) -> dict:
-        """ Calculate the numbers frequency """
+        """ Calculates the frequency of each number in a list.
+
+        Args:
+            numbers (list): The list of numbers.
+
+        Returns:
+            dict: The frequency of each number.
+        """
 
         frequency = {}
 
         for time in numbers:
             if time in frequency:
-                frequency[time] = frequency.get(time, 0) + 1 
+                frequency[time] = frequency.get(time, 0) + 1
 
         return frequency
 
