@@ -3,15 +3,17 @@ from os import path, makedirs
 import matplotlib.pyplot as plt
 from .berry_statistics import BerryStatistics
 
-class HistogramGenerator: # pylint: disable=too-few-public-methods
+class HistogramGenerator:
     """
     Class responsible for interacting with the Poke API to fetch berry data.
     """
     def __init__(self, berry_statistics: BerryStatistics):
         self.berry_statistics = berry_statistics
 
-    def generate_histogram(self, imgs_path='app/static/imgs'):
+    def generate_histogram(self):
         """ Generates and saves the histogram of the berry growth times. """
+        imgs_path = '/app/static/imgs'
+
         plt.hist(
             self.berry_statistics.growth_times,
             bins=range(
@@ -25,7 +27,8 @@ class HistogramGenerator: # pylint: disable=too-few-public-methods
         plt.ylabel('Frequency')
 
         if not path.exists(imgs_path):
-            makedirs(imgs_path)
+            makedirs(imgs_path[5:], exist_ok=True)
 
-        plt.savefig(f'{imgs_path}/histogram.png')
+        full_path = f"{imgs_path[4:]}/histogram.png"[1:]
+        plt.savefig(full_path)
         plt.close()
