@@ -29,6 +29,7 @@ class HistogramGenerator:
         if not path.exists(imgs_path):
             makedirs(imgs_path[5:], exist_ok=True)
 
-        full_path = f"{imgs_path[4:]}/histogram.png"[1:]
+        full_path = f"{imgs_path[5:]}/histogram.png"
+
         plt.savefig(full_path)
         plt.close()
