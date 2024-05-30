@@ -17,9 +17,10 @@ app = Flask(__name__, static_folder='static')
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 berries_bp = Blueprint(name=ALL_BERRY_STATS_PATH, import_name=__name__)
 
+
 @app.route('/', methods=['GET'])
 def base_endpoint():
-    """ Base endpoint to get information about the API """
+    """ Base endpoint of the API """
     api_path = f"{API_HOST}:{API_PORT}/api/v1/{ALL_BERRY_STATS_PATH}/"
 
     response = {
@@ -36,7 +37,8 @@ def base_endpoint():
 @berries_bp.route('/', methods=['GET'])
 @cache.cached(timeout=50)
 def get_all_berries_stats():
-    """ Return barries stats """
+    """ Endpoint to get all berries statistics """
+
     berry_statistics = BerryStatistics(BerryDataFetcher())
     response = berry_statistics.get_stats()
 
@@ -45,7 +47,7 @@ def get_all_berries_stats():
 
 @berries_bp.route('/histogram')
 def histogram_view():
-    """ Render the histogram page """
+    """ Endpoint to get the histogram of berries """
 
     if not path.exists(path="/app/static/imgs/histogram.png"):
         berry_statistics = BerryStatistics(BerryDataFetcher())

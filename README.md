@@ -74,8 +74,13 @@ This endpoint retrieves statistics about Poke Berries. The response will be in J
    "mean_growth_time": 12.86,
    "min_growth_time": 2,
    "median_growth_time": 15.0,
-   "variance_growth_time": "",
-   "frequency_growth_time": {}, // time, {growth_time: frequency, ...}
+   "variance_growth_time": 62.47,
+   "frequency_growth_time": {
+    "2": 5,
+    "3": 5,
+    "4": 3,
+    ...
+   },
 }
 ```
 
