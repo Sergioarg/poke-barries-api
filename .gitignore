@@ -2,6 +2,7 @@
 .env
 __pycache__/
 *.json
+.pytest_cache
 
 # Image generated
 histogram.png

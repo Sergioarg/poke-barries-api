@@ -63,7 +63,6 @@ Once the Flask application is running, you can access the API endpoints using a 
 This endpoint retrieves statistics about Poke Berries. The response will be in JSON format this is a example of the response:
 
 ```json
-// Response
 {
    "berries_names": [
       "cheri",

@@ -2,8 +2,6 @@
 from os import getenv
 import requests
 
-API_TIMEOUT = 30
-
 class BerryDataFetcher:
     """
     Class responsible for interacting with the Poke API to fetch berry data.
@@ -15,7 +13,7 @@ class BerryDataFetcher:
     def fetch_data(self, url: str):
         """ Fetch data from api """
         try:
-            response = requests.get(url, timeout=API_TIMEOUT)
+            response = requests.get(url, timeout=30)
             response.raise_for_status()
             data = response.json()
         except requests.exceptions.RequestsDependencyWarning as e:
